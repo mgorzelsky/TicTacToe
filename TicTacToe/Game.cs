@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace TicTacToe
         Player playerO = new Player(CurrentState.O);
         public void PlayGame()
         {
-            string gameResult = "continue";
+            string gameResult;
             playArea.DrawBoard();
 
             //The loop that handles the game play.
@@ -30,15 +31,20 @@ namespace TicTacToe
                     break;
             }
             
-            Console.SetCursorPosition(10, 10);
+            //Clears the current line of text under the game board so that results can be cleanly displayed.
+            Console.SetCursorPosition(2, 6);
             Console.WriteLine("\r" + new string(' ', Console.WindowWidth) + "\r");
-            Console.SetCursorPosition(10, 10);
+            Console.SetCursorPosition(2, 6);
 
             if (gameResult == "X" || gameResult == "O")
                 Console.WriteLine("Congratulations player " + gameResult + "! You've won the game!");
             else
-                Console.WriteLine("Well it seems it was a " + gameResult + "! Better Luck Next time!");
+                Console.WriteLine("Well it seems it was a " + gameResult + "! Better luck next time!");
+            
+            Thread.Sleep(5000);
         }
+        
+        //Checks all the possible win states and returns a string declaring who, if anyone, won
         private string WinCheck()
         {
             CurrentState[,] currentGameBoard = playArea.GetState();
