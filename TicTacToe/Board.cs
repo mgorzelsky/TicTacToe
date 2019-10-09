@@ -4,6 +4,8 @@ using System.Text;
 
 namespace TicTacToe
 {
+    //Handles drawing the gameboard and its states on the screen as well as updating the state of the game and allowing
+    //players to make changes to the board. Board Board Board, it looks spelled wrong after you read it enough times.
     class Board
     {
         //2D array the tracks the current state of the 9 play locations on the board. Is used to check for
@@ -18,12 +20,13 @@ namespace TicTacToe
         //Draw the initial starting board. Will also wipe any current plays on the board.
         public void DrawBoard()
         {
+            Console.Clear();
             Draw(0, 0, "   |   |   ");
             Draw(0, 1, "---+---+---");
             Draw(0, 2, "   |   |   ");
             Draw(0, 3, "---+---+---");
             Draw(0, 4, "   |   |   ");
-            Console.SetCursorPosition(10, 10);
+            Console.SetCursorPosition(2, 6);
             Console.WriteLine("Welcome to Tic-Tac-Toe! Use the arrow keys to move and press Enter to confirm your move!");
         }
 

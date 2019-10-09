@@ -8,10 +8,27 @@ namespace TicTacToe
     {
         static void Main()
         {
-            Game thisGame = new Game();
-            thisGame.PlayGame();
-            
-            Console.ReadKey();
+            //Play again loop. Allows the players to choose to play again or to quit.
+            while (true)
+            {
+                ConsoleKeyInfo playAgain;
+                Game thisGame = new Game();
+                thisGame.PlayGame();
+
+                Console.Clear();
+                Console.SetCursorPosition(2, 3);
+                Console.Write("Would you like to play again?\n Press Y to play again or N to quit : ");
+                
+                //Handles the incorrect keys being pressed
+                while (true)
+                {
+                    playAgain = Console.ReadKey(true);
+                    if (playAgain.Key == ConsoleKey.N)
+                        return;
+                    if (playAgain.Key == ConsoleKey.Y)
+                        break;
+                }
+            }
         }
     }
 }
